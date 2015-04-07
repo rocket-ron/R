@@ -1,0 +1,84 @@
+metallica
+lecturerData
+library(Rcmdr)
+alchoholPersonality<-subset(lecturerData, alchohol>10, select=c("friends","alchohol","neurotic"))
+alchoholPersonality
+alchoholPersonalityMatrix<-as.matrix(alchoholPersonality)
+alchoholPersonalityMatrix
+library(Rcmdr)
+sunspots
+require(graphics)
+plot(sunspots, main = "sunspots data", xlab = "Year", ylab= "Monthly Sunspot Numbers")
+pvalue()
+pscore()
+mu1 <- 2/(sqrt(100))
+mu1
+zscore()
+(2.5 - 2.0)/2
+2*pnorm(2.5)
+2 * pnorm(-2.5)
+-0.5/20
+pnorm(0.025)
+z <- (2 - 2.5)/2
+z
+2*pnorm(-0.25)
+a <- 2
+s <- 2
+n <- 100
+xbar <- 2.5
+z <- (xbar-a)/(s/sqrt(n))
+z
+2*pnorm(-2.5)
+2*(1-pnorm(xbar,mean=a,sd=s/sqrt(100)))
+10000 - 10300
+-300/(1000 / sqrt(10))
+pnorm(-300/(1000/sqrt(10)))
+pnorm(300/(1000/sqrt(10)))
+2*(pnorm(-abs(500/(1000/sqrt(10))))
+)
+2*(pnorm((500/(1000/sqrt(10))))
+)
+500/1000/sqrt(10)
+1000/sqrt(10)
+500/(1000/sqrt(10))
+pnorm(1.581139)
+pnorm(-1.581139)
+pnorm(-500/(1000/sqrt(10))) - pnorm(500/(1000/sqrt(10)))
+pnorm(10300,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10))
+pnorm(9500,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10)) - pnorm(9500,mean=10000,sd=1000/sqrt(10))
+exit
+setwd("~/Documents/R/lr")
+setwd("~/Documents/R/lr")
+setwd("~/Documents/R/lr")
+load("Country3.dat")
+load("Countries3.dat")
+load("Countries3.Rdata")
+summary(Countries)
+scatterplot(Countries$gdp, Countries$internet_users_2011)
+library(car)
+scatterplot(Countries$gdp, Countries$internet_users_2011)
+rownames(Countries) <- Countries$country
+scatterplot(Countries$gdp, Countries$internet_users_2011)
+Countries$loggdp <- log(Countries$gpd)
+Countries$loggdp <- log(10, Countries$gpd)
+?log
+Countries$loggdp <- log10(Countries$gpd)
+Countries$loggdp <- log10(Countries$gdp)
+scatterplot(Countries$loggdp, Countries$internet_users_2011)
+model = lm(internet_users_2011 ~ loggdp, data = Countries)
+summary(model)
+plot(model)
+library(lmtest)
+bptest(model)
+summary(model)
+10**31.978
+Countries$loggdp <- log(Countries$gdp)
+scatterplot(Countries$loggdp, Countries$internet_users_2011)
+model = lm(internet_users_2011 ~ loggdp, data = Countries)
+summary(model)
+exp(13.89)
+summary(Countries)
+model = lm(internet_users_2011 ~ gdp, data = Countries)#
+summary(model)

@@ -1,5 +1,5 @@
 # Set the working directory
-setwd("/Users/rcordell/Documents/Data/W203/R Book Data")
+setwd("/Users/rcordell/Documents/R/W203")
 
 # Load the ggplot library
 library(ggplot2)
@@ -9,38 +9,62 @@ facebookData = read.delim("FacebookNarcissism.dat", header = TRUE)
 
 # experiment with different graph elements
 graph <- ggplot(facebookData, aes(NPQC_R_Total, Rating))
+# simple scatterplot
 graph + geom_point()
+# scsatterplot with inverted triangle shapes instead of circles
 graph + geom_point(shape = 17)
+# scatterplot with squares with x's in them
 graph + geom_point(shape = 7)
+# scatterplot with big squares with x's in them
 graph + geom_point(shape = 7, size = 6)
+# scatterplot with large right-side up triangles
 graph + geom_point(shape = 2, size = 6)
+# scatterplot with large + signs
 graph + geom_point(shape = 3, size = 6)
+# scatterplot with large X's
 graph + geom_point(shape = 4, size = 6)
+# scatterplot with large diamonds
 graph + geom_point(shape = 5, size = 6)
+# scatterplot with default shape and size, but vary color by variable "rating_type"
+# Rating_Type is a 4-level factor. A legend for the colors is shown on the right
 graph + geom_point(aes(color = Rating_Type))
+# scatterplot with red dots
 graph + geom_point(color = "RED")
+# scatterplot that uses jitter to spread the points out so they're not on top of one another
+# and vary color by Rating_Type
 graph + geom_point(aes(color = Rating_Type), position = "jitter")
+# vary shape by "Rating_Type". A legend for shapes is shown on the right
 graph + geom_point(aes(shape = Rating_Type), position = "jitter")
-
-# scatter plot of Facebook data
+#
+#
+# Let's play with a different data set, Exam Anxiety
+examData <- read.delim("Exam Anxiety.dat", header = TRUE)
+summary(examData)
+# scatter plot of Exam data
 scatter <- ggplot(examData, aes(Anxiety, Exam))
 scatter + geom_point()
+# custom labels for the scatter plot
 scatter + geom_point() + labs(x = "Exam Anxiety", y = "Exam Performance %")
-
+# add a curve that follows the mean of the data
 scatter + geom_point() + geom_smooth() + labs(x = "Exam Anxiety", y = "Exam Performance %")
-
+# add a line that follows a linear model of the data
 scatter + geom_point() + geom_smooth(method = "lm") + labs(x = "Exam Anxiety", y = "Exam Performance %")
+# change the color of the line to RED
 scatter + geom_point() + geom_smooth(method = "lm", colour = "RED") + labs(x = "Exam Anxiety", y = "Exam Performance %")
+# remove the envelope from the line
 scatter + geom_point() + geom_smooth(method = "lm", colour = "RED", se = F) + labs(x = "Exam Anxiety", y = "Exam Performance %")
+# change the color of the envelope and line to blue and make it transparent
 scatter + geom_point() + geom_smooth(method = "lm", alpha = 0.1, fill = "Blue") + labs(x = "Exam Anxiety", y = "Exam Performance %")
+# color the scatterplot points by gender - but this isn't working as expected
 scatter <- ggplot(examData, aes(Anxiety, Exam), color = Gender)
 scatter + geom_point() + geom_smooth(method = "lm") + labs(x = "Exam Anxiety", y = "Exam Performance %")
-scatter + geom_point() + geom_smooth(method = "lm") + labs(x = "Exam Anxiety", y = "Exam Performance %")
-scatter <- ggplot(examData, aes(Anxiety, Exam), color = Gender)
+# scatter + geom_point() + geom_smooth(method = "lm") + labs(x = "Exam Anxiety", y = "Exam Performance %")
+# scatter <- ggplot(examData, aes(Anxiety, Exam), color = Gender)
 
 scatter + geom_point()
 scatter + geom_point() + geom_smooth(method = "lm")
 scatter + geom_point() + geom_smooth(method = "lm", aes(fill = Gender), alpha = 0.1)
+# create a linear line for each Gender and color the envelope accordingly
 scatter + geom_point() + geom_smooth(method = "lm", aes(color = Gender, fill = Gender), alpha = 0.1)
 scatter + geom_point() + geom_smooth(method = "lm", aes(color = Gender, fill = Gender), alpha = 0.1) + labs(x = "Exam Anxiety", y = "Exam Performance %")
 scatter <- ggplot(examData, aes(Anxiety, Exam, color = Gender))
