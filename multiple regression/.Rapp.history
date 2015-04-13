@@ -1,0 +1,104 @@
+metallica
+lecturerData
+library(Rcmdr)
+alchoholPersonality<-subset(lecturerData, alchohol>10, select=c("friends","alchohol","neurotic"))
+alchoholPersonality
+alchoholPersonalityMatrix<-as.matrix(alchoholPersonality)
+alchoholPersonalityMatrix
+library(Rcmdr)
+sunspots
+require(graphics)
+plot(sunspots, main = "sunspots data", xlab = "Year", ylab= "Monthly Sunspot Numbers")
+pvalue()
+pscore()
+mu1 <- 2/(sqrt(100))
+mu1
+zscore()
+(2.5 - 2.0)/2
+2*pnorm(2.5)
+2 * pnorm(-2.5)
+-0.5/20
+pnorm(0.025)
+z <- (2 - 2.5)/2
+z
+2*pnorm(-0.25)
+a <- 2
+s <- 2
+n <- 100
+xbar <- 2.5
+z <- (xbar-a)/(s/sqrt(n))
+z
+2*pnorm(-2.5)
+2*(1-pnorm(xbar,mean=a,sd=s/sqrt(100)))
+10000 - 10300
+-300/(1000 / sqrt(10))
+pnorm(-300/(1000/sqrt(10)))
+pnorm(300/(1000/sqrt(10)))
+2*(pnorm(-abs(500/(1000/sqrt(10))))
+)
+2*(pnorm((500/(1000/sqrt(10))))
+)
+500/1000/sqrt(10)
+1000/sqrt(10)
+500/(1000/sqrt(10))
+pnorm(1.581139)
+pnorm(-1.581139)
+pnorm(-500/(1000/sqrt(10))) - pnorm(500/(1000/sqrt(10)))
+pnorm(10300,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10))
+pnorm(9500,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10)) - pnorm(9500,mean=10000,sd=1000/sqrt(10))
+exit
+setwd("~/OneDrive/MIDS/W203/Data/multiple regression")
+album2 <- read.delim("Album Sales 2.dat", header = TRUE)
+summary(album2)
+library(psych)
+scatterplot(sales, adverts)
+library(car)
+scatterplot(sales, adverts)
+scatterplot(album2$sales, album2$adverts)
+cor.test(album2$sales, album2$adverts)
+albumSales.2 <- lm(sales ~ adverts, data = album2)
+summary(albumSales.2)
+albmuSales.3 <- lm(sales ~ adverts + airplay, data = album2)
+summary(albumSales.3)
+albumSales.3 <- lm(sales ~ adverts + airplay, data = album2)
+summary(albumSales.3)
+plot(albumSales.2)
+plot(albumSales.3)
+albumSales.4 <- lm(sales ~ adverts + airplay + attract, data = album2)
+summary(albumSales.4)
+plot(albumSales.4)
+library(QuantPsych)
+library(QuantPsyc)
+library(QuantPsyc)
+library(boot)
+lm.beta(albumSales.4)
+confint(albumSales.4)
+anova(albumSales.2, albumSales.3)
+anova(albumSales.3, albumSales.4)
+album2$standardize.residuals <- rstandard(albumSales.4)
+album2$studentized.residuals <- rstudent(albumSales.4)
+album2$cooks.distance <- cooks.distance(albumSales.4)
+album2$dfbeta <- dfbeta(albumSales.4)
+album2$dffit <- dffits(albumSales.4)
+album2$leverage <- hatvalues(albumSales.4)
+album2$covariance.ratios <- covratio(albumSales.4)
+album2
+album2.large.residual <- album2$standardized.residuals > 2 | album2$standardized.residuals < -2
+album2$large.residual <- album2$standardized.residuals > 2 | album2$standardized.residuals < -2
+album2$large.residual <- album2$standardized.residuals > 2 | album2$standardized.residuals < -2
+album2$large.residual <- (album2$standardized.residuals > 2) | (album2$standardized.residuals < -2)
+album2.large.residual
+album2$standardized.residuals <- rstandard(albumSales.4)
+album2$large.residual <- (album2$standardized.residuals > 2) | (album2$standardized.residuals < -2)
+sum(album2$large.residual)
+album2[album2$large.residual, c("sales","airplay","attract","adverts","standardized.residuals")]
+album2[album2$large.residual, c("cooks.distance", "leverage", "covariance.ratios")]
+1 + 3(3 + 1)/200
+1 + 12/200
+1 - 12/200
+dwt(albumSales.4)
+vif(albumSales.4)
+1/vif(albumSales.4)
+mean(vif(albumSales.4))
