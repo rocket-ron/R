@@ -1,0 +1,188 @@
+metallica
+lecturerData
+library(Rcmdr)
+alchoholPersonality<-subset(lecturerData, alchohol>10, select=c("friends","alchohol","neurotic"))
+alchoholPersonality
+alchoholPersonalityMatrix<-as.matrix(alchoholPersonality)
+alchoholPersonalityMatrix
+library(Rcmdr)
+sunspots
+require(graphics)
+plot(sunspots, main = "sunspots data", xlab = "Year", ylab= "Monthly Sunspot Numbers")
+pvalue()
+pscore()
+mu1 <- 2/(sqrt(100))
+mu1
+zscore()
+(2.5 - 2.0)/2
+2*pnorm(2.5)
+2 * pnorm(-2.5)
+-0.5/20
+pnorm(0.025)
+z <- (2 - 2.5)/2
+z
+2*pnorm(-0.25)
+a <- 2
+s <- 2
+n <- 100
+xbar <- 2.5
+z <- (xbar-a)/(s/sqrt(n))
+z
+2*pnorm(-2.5)
+2*(1-pnorm(xbar,mean=a,sd=s/sqrt(100)))
+10000 - 10300
+-300/(1000 / sqrt(10))
+pnorm(-300/(1000/sqrt(10)))
+pnorm(300/(1000/sqrt(10)))
+2*(pnorm(-abs(500/(1000/sqrt(10))))
+)
+2*(pnorm((500/(1000/sqrt(10))))
+)
+500/1000/sqrt(10)
+1000/sqrt(10)
+500/(1000/sqrt(10))
+pnorm(1.581139)
+pnorm(-1.581139)
+pnorm(-500/(1000/sqrt(10))) - pnorm(500/(1000/sqrt(10)))
+pnorm(10300,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10))
+pnorm(9500,mean=10000,sd=1000/sqrt(10))
+pnorm(10500,mean=10000,sd=1000/sqrt(10)) - pnorm(9500,mean=10000,sd=1000/sqrt(10))
+exit
+setwd("~/Documents/R/logistic regression")
+eelData <- read.delim("eel.dat", header = TRUE)
+str(eelData)
+head(eelData)
+eelData$Cured <- relevel(eelData$Cured, "Not Cured")
+eelData$Intervention <- relevel(eelData$Intervention, "No Treatment")
+str(eelData)
+eelModel.1 <- glm(Cured ~ Intervention, data = eelData, family = binomial(link = "logit"))
+eelModel.2 <- glm(Cured ~ Interention + Duration, data = eelData, family = binomial(link = "logit"))
+eelModel.2 <- glm(Cured ~ Intervention + Duration, data = eelData, family = binomial(link = "logit"))
+summary(eelModel.1)
+summary(eelModel.2)
+chisq.test((154.08 - 144.16))
+chisq.prob <- 1 - pchisq(eelModel.1$null.deviance - eelModel.1$deviance, eelModel.1$df.null - eelModel.1$df.residual)
+chisq.prob
+print(154.08-144.16)
+print(sqrt((3.074^2-(2*1))/154.08))
+str(eelModel.1)
+eelModel.1
+eelModel.1$z
+eelModel.1$z.statistic
+eelModel.1$z.value
+eelModel.1$effects
+coef(summary(eelModel.1))[, 3]
+summary(eelModel.1)$coefficients[-1,3]
+coef(summary(eelModel.1))[-1, 3]
+z.stat <- coef(summary(eelModel.1))[-1, 3]
+eelModel.1.z <- coef(summary(eelModel.1))[-1, 3]
+eelModel.1.R <- sqrt((eelModel.1.z^2 - 2*(eelModel.1$df.null - eelModel.1$df.residual))/eelModel.1$null.deviance)
+eelModel.1.R
+summary(eelModel.1)
+eelModel.1$residual.deviance
+eelModel.1$deviance
+eelModel.1.chisq <- eelModel.1$null.deviance - eelModel.1$deviance
+eelModel.1.R2L <- eelModel.1.chisq / eelModel.1$null.deviance
+eelModel.1.R2L
+eelModel.1.R
+eelModel.1.RCS <- 1 - exp((eelModel.1$deviance - eelModel.1$null.deviance) / (eelModel.1$df.null + 1))
+eelModel.1.RCS
+eelModel.1.RCN <- eelModel.1.RCS / (1 - (exp(-(eelModel.1$null.deviance / (eelModel.1$df.null + 1)))))
+eelModel.1.RCN
+eelModel.1.RCS <- 1 - exp((eelModel.1$deviance - eelModel.1$null.deviance) / length(eelModel.1$fitted.values))
+eelModel.1.RCN <- eelModel.1.RCS / (1 - (exp(-(eelModel.1$null.deviance / length(eelModel.1$fitted.values)))))
+eelModel.1.oddsRatio <- exp(eelModel.1$coefficients)
+eelModel.1.oddsRatio
+eelModel.1.oddsRatio <- exp(eelModel.1$coefficients[ , 1])
+eelModel.1.oddsRatio <- exp(eelModel.1$coefficients[1])
+eelModel.1.oddsRatio
+eelModel.1.oddsRatio <- exp(eelModel.1$coefficients[2])
+eelModel.1.oddsRatio
+exp(confint(eel.Model.1))
+exp(confint(eelModel.1))
+eelModel.2.chisq <- eelModel.1$deviance - eelModel.2$deviance  # deviance between the 2 models
+chisq.prob <- 1 - pchisq(eelModel.2.chisq, eelModel.1$df.residual - eelModel.2$df.residual)
+chisq.prob
+eelModel.2.chisq
+anova(eelModel.1, eelModel.2)
+eelData$predicted.probabilities <- fitted(eelModel.1)
+eelData$standardized.residuals <- rstandard(eelModel.1)
+eelData$studentized.residuals <- rstudent(eelModel.1)
+eelData$dfbeta <- dfbeta(eelModel.1)
+eelData$dffit <- dffit(eelModel.1)
+eelData$dffit <- dffits(eelModel.1)
+eelData$leverage <- hatvalues(eelModel.1)
+head(eelData[, c("Cured", "Intervantion", "Duration", "predicted.probabilities")])
+head(eelData[, c("Cured", "Intervention", "Duration", "predicted.probabilities")])
+eelData[, c("leverage", "studentized.residuals", "dfbeta")]
+penaltyData <- read.delim("penalty.day", header = TRUE)
+penaltyData <- read.delim("penalty.dat", header = TRUE)
+head(penaltyData)
+str(penaltyData)
+penaltyModel.1 = glm(Scored ~ Previous, data = penaltyData, family = binomial(link = "logit"))
+summary(penatlyModel.1)
+summary(penaltyModel.1)
+penaltyModel.1.chisq <- penaltyModel.1$null.deviance - penaltyModel.1$deviance
+penaltyModel.1.chisqProbability <- pchisq(penalyModel.1.chisq, penaltyModel.1$df.null - penaltyModel.1$df.residual)
+penaltyModel.1.chisqProbability <- pchisq(penaltyModel.1.chisq, penaltyModel.1$df.null - penaltyModel.1$df.residual)
+penaltyModel.1.chisq
+penaltyModel.1.chisqProbability
+penaltyModel.1.chisqProbability <- pchisq(penaltyModel.1.chisq, 1)
+penaltyModel.1.chisqProbability
+pchisq(penaltyModel.1.chisq, 1)
+penaltyModel.1$null.deviance
+penaltyModel.1$deviance
+penaltyModel.1$null.deviance - penaltyModel.1$deviance
+pchisq(42.466, 1)
+penaltyModel.1.z <- coef(summary(penaltyModel.1))[-1, 3]
+penaltyModel.1.z
+penaltyModel.1.R <- sqrt((penaltyModel.1.z^2 - 2*(penaltyModel.1$df.null - penaltyModel.1$df.residual))/penaltyModel.1$null.deviance)
+penaltyModel.1.R
+penaltyModel.1.R2L <- penaltyModel.1.chisq / penaltyModel.1$null.deviance
+penaltyModel.1.R2L
+penaltyModel.1.RCS <- 1 - exp((penaltyModel.1$deviance - penaltyModel.1$null.deviance) / length(penaltyModel.1$fitted.values))
+penaltyModel.1.RCS
+penaltyModel.1.RCN <- penaltyModel.1.RCS / (1 - (exp(-(penaltyModel.1$null.deviance / length(penaltyModel.1$fitted.values)))))
+penaltyModel.1.RCN
+penaltyModel.1.oddsRatio <- exp(penaltyModel.1$coefficients[2])
+penaltyModel.1.oddsRatio
+exp(confint(penaltyModel.1))
+penaltyModel.2 <- glm(Scored ~ Previous + PSWQ, data = penaltyData, family = binomial(link = "logit"))
+summary(penaltyModel.2)
+penaltyModel.2.chisq <- penaltyModel.1$deviance - penaltyModel.2$deviance
+penaltyModel.2.chisqProbability <- pchisq(penaltyModel.2.chisq, penaltyModel.1$df.residual - penaltyModel.2$df.residual)
+penaltyModel.2.chisq
+penaltyModel.2.chisqProbability
+penaltyModel.2.z <- coef(summary(penaltyModel.2))[-1, 3]
+penaltyModel.2.R <- sqrt((penaltyModel.2.z^2 - 2*(penaltyModel.1$df.residual - penaltyModel.2$df.residual))/penaltyModel.1$deviance)
+penaltyModel.2.R
+penaltyModel.2.R2L <- penaltyModel.2.chisq / penaltyModel.1$deviance
+penaltyModel.2.R2L
+penaltyModel.2.RCS <- e - exp((penaltyModel.2$deviance - penaltyModel.1$deviance) / length(penaltyModel.2$fitted.values))
+penaltyModel.2.RCS <- 1 - exp((penaltyModel.2$deviance - penaltyModel.1$deviance) / length(penaltyModel.2$fitted.values))
+penaltyModel.2.RCS
+penaltyModel.2.RCN <- penaltyModel.2.RCS / (1 - (exp(-(penaltyModel.1$deviance / length(penaltyModel.2$fitted.values)))))
+penaltyModel.2.RCN
+penaltyModel.2.oddsRatio <- exp(penaltyModel.2$coefficents[2])
+penaltyModel.3 <- glm(Scored ~ Previous + PSWQ + Anxious, data = penalty.dat, family = binomial())
+penaltyModel.3 <- glm(Scored ~ Previous + PSWQ + Anxious, data = penaltyData, family = binomial())
+summary(penalyModel.3)
+summary(penaltyModel.3)
+vif(penaltyModel.3)
+library(car)
+vif(penaltyModel.3)
+1/vif(penaltyModel.3)
+library(polycor)
+cor(penaltyData$Previous, penaltyData$PSWQ, penaltyData$Anxious)
+penaltyVars <- penaltyData[, c("Previous", "PSWQ", "Anxious")]
+cor(penaltyVars)
+cor.test(penaltyData$Previous, penaltyData$Anxious)
+cor.test(penaltyData$Previous, penaltyData$PSWQ)
+cor.test(penaltyData$Anxious, penaltyData$PSWQ)
+penaltyData$logPSWQInt <- log(penaltyData$PSWQ)*penaltyData$PSWQ
+penaltyData$logPreviousInt <- log(penaltyData$Previous)*penaltyData$Previous
+penaltyData$logAnxiousInt <- log(penaltyData$Anxious)*penaltyData$Anxious
+penaltyData$logPSWQInt <- log(penaltyData$PSWQ)*penaltyData$PSWQ
+penaltyModel.test <- glm(Scored ~ Previous + PSWQ + Anxious + logPreviousInt + logPSWQInt + logAnxiousInt, data = penaltyData, family = binomial())
+summary(penaltyModel.test)
